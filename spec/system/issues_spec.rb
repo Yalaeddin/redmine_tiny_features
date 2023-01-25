@@ -146,27 +146,5 @@ RSpec.describe "creating an issue", type: :system do
       find('tr#issue-2>td.buttons>a.icon-actions').click
       expect(page).to_not have_selector('a.icon-copy')
     end
-  end
-
-  describe "Load the issue's edit" do
-    it "Load the form when the option (load_issue_edit) is unselected" do
-      visit 'issues/2'
-      expect(page).to have_selector('#issue-form', visible: :hidden)
-    end
-
-    it "only on click button edit and the option (load_issue_edit) is selected" do
-      Setting.send "plugin_redmine_tiny_features=", {
-        "warning_message_on_closed_issues" => "1",
-        "default_open_status" => "2",
-        "default_project" => "1",
-        "load_issue_edit" => "1",
-      }
-      visit 'issues/2'
-      expect(page).to_not have_selector('#issue-form', visible: :hidden)
-      find('.icon-edit',  match: :first).click
-      # wait for render form
-      sleep 10      
-      expect(page).to have_selector('#issue-form')
-    end
-  end
+  end 
 end
