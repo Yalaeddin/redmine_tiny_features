@@ -74,6 +74,13 @@
   <% end %>
 </p>
 
+<p>
+  <%= label_tag '', { style: 'width: auto;' } do %>
+    <%= check_box_tag "settings[hide_members_section_on_project_overview]", '1', Setting["plugin_redmine_tiny_features"]["hide_members_section_on_project_overview"] %>
+    <%= l("hide_members_on_project_overview") %>
+  <% end %>
+</p>
+
 <%= javascript_tag do %>
   $(function() {
     if ((typeof $().select2) === 'function') {
